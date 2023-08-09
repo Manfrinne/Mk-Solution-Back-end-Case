@@ -1,0 +1,38 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:14
+    container_name: postgres-14
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: mkdbuser
+      POSTGRES_PASSWORD: mkdbpassword
+      POSTGRES_DB: mksolutionsdb
+    volumes:
+      - postgres-data:/data/postgres
+
+  sales-api:
+    image: sales-api
+    container_name: sales-api
+    build:
+      context: .
+    volumes:
+      - .:/src/app
+    ports:
+      - '3001:3000'
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: postgres://mkdbuser:mkdbpassword@postgres:5432/mksolutionsdb
+    networks:
+      - app-network
+    restart: always
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  postgres-data:
