@@ -23,4 +23,38 @@ export class ProductService {
       ...createdProduct,
     };
   }
+
+  async listItens(
+    page: number,
+    size: number,
+    sort: string,
+    order: string,
+    search: string,
+  ) {
+    const results = await this.prisma.product.findMany({
+      skip: page * size,
+      take: Number(size),
+      where: { name: { contains: search, mode: 'insensitive' } },
+      orderBy: { [sort]: order },
+    });
+
+    const totalItems = await this.prisma.product.count({
+      where: { name: { contains: search, mode: 'insensitive' } },
+    });
+
+    const totalPages = Math.ceil(totalItems / size) - 1;
+    const currentPage = Number(page);
+
+    return {
+      results,
+      pagination: {
+        length: totalItems,
+        size: size,
+        lastPage: totalPages,
+        page: currentPage,
+        startIndex: currentPage * size,
+        endIndex: currentPage * size + (size - 1),
+      },
+    };
+  }
 }
