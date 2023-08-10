@@ -1,7 +1,7 @@
 import { User } from '../entities/user.entity';
 import {
-  IsBoolean,
   IsEmail,
+  IsIn,
   IsString,
   Matches,
   MaxLength,
@@ -21,8 +21,13 @@ export class CreateUserDto extends User {
   password: string;
 
   @IsString()
+  @MinLength(3)
+  @MaxLength(20)
   name: string;
 
-  @IsBoolean()
-  isAdmin: boolean;
+  @IsString()
+  @IsIn(['buyer', 'seller'], {
+    message: 'Invalid role! Must be either "buyer" or "seller"',
+  })
+  role: string;
 }

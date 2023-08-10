@@ -8,7 +8,7 @@ async function main() {
       email: 'admin@email.com',
       password: 'admin',
       name: 'admin',
-      isAdmin: true,
+      role: 'buyer',
     },
   });
 }

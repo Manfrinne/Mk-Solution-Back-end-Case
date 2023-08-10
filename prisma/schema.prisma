@@ -8,12 +8,12 @@ datasource db {
 }
 
 model User {
-  id       String   @id @default(uuid())
-  email    String   @unique
-  password String
-  name     String
-  isAdmin  Boolean
-  sales    Sale[]
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  name      String
+  role      String   // "buyer" or "seller"
+  sales     Sale[]
 }
 
 model Product {
