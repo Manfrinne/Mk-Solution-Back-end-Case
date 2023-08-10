@@ -1,5 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import * as bcrypt from 'bcrypt';
+import { products } from './seed-products';
 
 const prisma = new PrismaClient();
 
@@ -9,9 +10,15 @@ async function main() {
       email: 'admin@email.com',
       name: 'admin',
       password: await bcrypt.hash('admin', 2),
-      role: 'buyer',
+      role: 'seller',
     },
   });
+
+  for (const product of products) {
+    await prisma.product.create({
+      data: product,
+    });
+  }
 }
 
 main()
