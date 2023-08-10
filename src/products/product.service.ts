@@ -57,4 +57,10 @@ export class ProductService {
       },
     };
   }
+
+  async findById(id: string) {
+    return await this.prisma.product.findFirstOrThrow({
+      where: { id },
+    });
+  }
 }

@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Post, Request } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  NotFoundException,
+  Param,
+  Post,
+  Request,
+} from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { ProductService } from './product.service';
 
@@ -21,5 +29,12 @@ export class ProductController {
       request.query.hasOwnProperty('order') ? request.query.order : 'asc',
       request.query.hasOwnProperty('search') ? request.query.search : '',
     );
+  }
+
+  @Get(':id')
+  async findById(@Param('id') id: string) {
+    return this.productService.findById(id).catch((e) => {
+      throw new NotFoundException(e.message);
+    });
   }
 }
