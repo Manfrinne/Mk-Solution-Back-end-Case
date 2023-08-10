@@ -1,7 +1,6 @@
-export class User {
-  id?: string;
+export class UserFromJwt {
+  id: string;
   email: string;
-  password: string;
   name: string;
   isAdmin: boolean;
 }
