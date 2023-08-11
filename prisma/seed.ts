@@ -7,10 +7,19 @@ const prisma = new PrismaClient();
 async function main() {
   await prisma.user.create({
     data: {
-      email: 'admin@email.com',
-      name: 'admin',
-      password: await bcrypt.hash('admin', 2),
+      email: 'vendedor@email.com',
+      name: 'Vendedor da Loja',
+      password: await bcrypt.hash('seller', 2),
       role: 'seller',
+    },
+  });
+
+  await prisma.user.create({
+    data: {
+      email: 'comprador@email.com',
+      name: 'Comprador de Produtos',
+      password: await bcrypt.hash('buyer', 2),
+      role: 'buyer',
     },
   });
 

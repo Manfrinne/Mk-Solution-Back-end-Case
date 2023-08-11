@@ -12,24 +12,33 @@ model User {
   email     String   @unique
   password  String
   name      String
-  role      String   // "buyer" or "seller"
-  sales     Sale[]
-}
-
-model Product {
-  id        String   @id @default(uuid())
-  name      String
-  price     Float
-  inventory Int
-  sales     Sale[]
+  role      String
 }
 
 model Sale {
-  id         String   @id @default(uuid())
-  userId     String
-  productId  String
-  quantity   Int
-  totalPrice Float
-  user       User     @relation(fields: [userId], references: [id])
-  product    Product  @relation(fields: [productId], references: [id])
+  id          String   @id @default(uuid())
+  usersId     String
+  client      String
+  quantity    Int
+  totalPrice  Float
+  soldProducts SaleToProduct[]
+}
+
+model Product {
+  id            String   @id @default(uuid())
+  name          String
+  price         Float
+  description   String
+  category      String
+  inventory     Int
+  sales         SaleToProduct[]
+}
+
+model SaleToProduct {
+  id       String   @id @default(uuid())
+  saleId   String
+  productId String
+  quantity Int
+  product   Product  @relation(fields: [productId], references: [id])
+  sale     Sale     @relation(fields: [saleId], references: [id])
 }

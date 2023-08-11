@@ -12,6 +12,16 @@ export class CreateProductDto extends Product {
   @Type(() => Number)
   price: number;
 
+  @IsString()
+  @MinLength(15)
+  @MaxLength(100)
+  description: string;
+
+  @IsString()
+  @MinLength(2)
+  @MaxLength(15)
+  category: string;
+
   @IsNumber({}, { message: 'Specify the quantity of the product!' })
   @Type(() => Number)
   inventory: number;
