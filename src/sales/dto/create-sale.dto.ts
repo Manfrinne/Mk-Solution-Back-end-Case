@@ -30,4 +30,6 @@ export class CreateSaleDto extends Sale {
 
   @Type(() => Number)
   totalPrice: number;
+
+  qrCodeBase64: string;
 }
