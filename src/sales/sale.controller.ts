@@ -2,6 +2,7 @@ import { Body, Controller, Post } from '@nestjs/common';
 import { CreateSaleDto } from './dto/create-sale.dto';
 import { SaleService } from './sale.service';
 import { CurrentUser } from 'src/auth/decorators/current-user.decorator';
+import { User } from '@prisma/client';
 
 @Controller('sales')
 export class SaleController {
@@ -9,7 +10,7 @@ export class SaleController {
 
   @Post()
   async create(
-    @CurrentUser() currentUsers,
+    @CurrentUser() currentUsers: User,
     @Body() createSaleDto: CreateSaleDto,
   ) {
     return this.saleService.registerSale(
