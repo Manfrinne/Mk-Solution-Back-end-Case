@@ -104,12 +104,15 @@ export class SaleService {
       where: { id: createdSale.client },
     });
 
+    const { name, email } = client;
+    const { id, quantity, totalPrice } = createdSale;
+
     const qrCodePayload = {
-      sale_id: createdSale.id,
-      client_name: client.name,
-      client_email: client.email,
-      quantity: createdSale.quantity,
-      total_price: createdSale.totalPrice,
+      sale_id: id,
+      client_name: name,
+      client_email: email,
+      quantity: quantity,
+      total_price: totalPrice,
     };
 
     const qrCodeData = JSON.stringify(qrCodePayload);
