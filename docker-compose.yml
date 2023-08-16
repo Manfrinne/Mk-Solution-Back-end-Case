@@ -1,7 +1,7 @@
 version: '3'
 services:
   postgres:
-    image: postgres:14
+    image: postgres:14.1-alpine
     container_name: postgres-14
     restart: always
     ports:
@@ -26,8 +26,6 @@ services:
       - postgres
     environment:
       DATABASE_URL: ${DATABASE_URL}
-    networks:
-      - app-nest-network
     restart: always
 
   redis:
@@ -36,9 +34,9 @@ services:
     ports:
       - '6379:6379'
 
-networks:
-  app-nest-network:
-    driver: bridge
-
 volumes:
   postgres-data:
+
+networks:
+  app-nest-network:
+    external: true

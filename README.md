@@ -104,9 +104,9 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 5 - Rode as migrations com `npx prisma generate`.
 
-6 - Rode `npx prisma migrate dev` e `npx prisma migrate reset` para dar um seed no database.
+6 - Rode `npx prisma db push` e `npx prisma migrate reset` para dar um seed no database.
 
-7 - Você vai precisar logar o usuário para acessar as rotas com um Token: `"email: 'vendedor@email.com', password: 'saller',"`
+7 - Você vai precisar logar o usuário para acessar as rotas com um Token: `"email: 'vendedor@email.com', password: 'saller',"`, se você instalar a extensão Thunder Client no VSCode os endpoints vão estar configurados.
 
 ## 👨‍🏫 Como contribuir:
 
