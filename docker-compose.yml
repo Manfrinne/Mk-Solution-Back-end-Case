@@ -7,9 +7,9 @@ services:
     ports:
       - 5432:5432
     environment:
-      POSTGRES_USER: mkdbuser
-      POSTGRES_PASSWORD: mkdbpassword
-      POSTGRES_DB: mksolutionsdb
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
     volumes:
       - postgres-data:/data/postgres
 
@@ -25,9 +25,9 @@ services:
     depends_on:
       - postgres
     environment:
-      DATABASE_URL: postgres://mkdbuser:mkdbpassword@postgres:5432/mksolutionsdb
+      DATABASE_URL: ${DATABASE_URL}
     networks:
-      - app-network
+      - app-nest-network
     restart: always
 
   redis:
@@ -37,7 +37,7 @@ services:
       - '6379:6379'
 
 networks:
-  app-network:
+  app-nest-network:
     driver: bridge
 
 volumes:

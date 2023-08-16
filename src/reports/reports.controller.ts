@@ -17,7 +17,7 @@ export class ReportsController {
   private async reportsScheduleCronJob() {
     if (!this.isTaskScheduled) {
       // Enviar todo dia 2:00 AM, modifique para '* * * * *' (um email por minuto)
-      cron.schedule('0 2 * * *', async () => {
+      cron.schedule('* * * * *', async () => {
         const reports = await this.reportsService.generateBestSellingReport();
 
         await this.sendMailService.sendMail(reports);

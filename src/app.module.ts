@@ -13,9 +13,13 @@ import { MailerModule } from '@nestjs-modules/mailer';
 import { ReportsModule } from './reports/reports.module';
 import { SendMailProducerService } from './jobs/sendMail-producer-service';
 import { SendMailConsumer } from './jobs/sendMail-consumer';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
     PrismaModule,
     UserModule,
     ProductModule,
