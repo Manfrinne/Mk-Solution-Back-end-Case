@@ -58,18 +58,6 @@ abaixo sejam implementados...
   - Implementa funcionalidades relacionadas a vendas, conforme discutido anteriormente.
   - Também se conecta à API de Criação de Usuários para verificar a autenticação e autorização do usuário antes de processar solicitações.
 
-**API de Gerenciamento de Vendas:**
-
-- Endpoints para criar vendas, adicionar itens a uma venda, recuperar informações de vendas e seus itens.
-- Essa API permitirá que você realize operações relacionadas às vendas, como criar novas vendas, adicionar produtos a uma venda específica e recuperar informações sobre as vendas.
-- Exemplos de endpoints:
-  - `POST /api/vendas`: Cria uma nova venda.
-  - `POST /api/vendas/:id/itens`: Adiciona um item a uma venda existente.
-  - `GET /api/vendas/:id`: Retorna informações sobre uma venda específica.
-  - `GET /api/vendas/:id/itens`: Retorna os itens associados a uma venda específica.
-  - Implementa funcionalidades relacionadas a vendas, conforme discutido anteriormente.
-  - Também se conecta à API de Criação de Usuários para verificar a autenticação e autorização do usuário antes de processar solicitações.
-
 **Implantação com Docker e Docker Compose:**
 
 - Docker: Utilizamos contêineres Docker para encapsular nossa aplicação.
