@@ -30,7 +30,7 @@ services:
 
   redis:
     image: redis:6.0
-    container_name: redis-server
+    container_name: ${REDIS_HOST}
     ports:
       - '6379:6379'
 
