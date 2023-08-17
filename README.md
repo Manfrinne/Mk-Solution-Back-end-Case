@@ -79,6 +79,8 @@ abaixo sejam implementados...
 
 - Enviar emails automaticamente com BullMQ no Redis.
 
+<img alt="Mk-Solutions" title="Mk-Solutions" src=".github/RELATORIO-VENDAS.jpg" width="500px"/>
+
 ## 🚀 Tecnologias:
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
